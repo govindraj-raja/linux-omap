@@ -1669,18 +1669,12 @@ static int __init serial_omap_init(void)
 		return ret;
 	ret = platform_driver_register(&serial_omap_driver);
 	if (ret != 0)
-		uart_unregister_driver(&serial_omap_reg);
-	return ret;
-}
-
-static void __exit serial_omap_exit(void)
-{
-	platform_driver_unregister(&serial_omap_driver);
+	
 	uart_unregister_driver(&serial_omap_reg);
 }
 
 module_init(serial_omap_init);
-module_exit(serial_omap_exit);
+
 
 MODULE_DESCRIPTION("OMAP High Speed UART driver");
 MODULE_LICENSE("GPL");
